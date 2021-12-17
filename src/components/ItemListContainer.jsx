@@ -1,10 +1,16 @@
-// Esta informacion va en la seccion nosotros
+import ItemList from "../components/ItemList"
 
 const ItemListContainer = () => {
+    const productos = [
+        {id: 1, producto: 'Ipa', precio: 100},
+        {id: 2, producto: 'Red Ipa', precio: 200},
+        {id: 3, producto: 'Pilsen', precio: 300}
+    ]
+
     return (
-        <div className="fs-3 container">
-            ACA VA A ESTAR UN POCO DE INFORMACION DE LO QUE HACEMOS EN LA CERVECERIA
-        </div>
+        <>
+            <ItemList productos={productos}/>
+        </>
     )
 }
 
