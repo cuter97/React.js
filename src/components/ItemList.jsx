@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react"
 import Item from "./Item";
 
-const ItemList = ({productos}) => {
+const ItemList = () => {
 
     const [cerveza, setCerveza] = useState([]);
-    
-    
+        
+    const getItem = async () => {
+        const data = await fetch('https://my-json-server.typicode.com/cuter97/API/productos')
+        const prod = await data.json()
+        setCerveza(prod)
+    }
+
     useEffect(() => {
 
         const promesa = new Promise( (res, rej) => {
             
             setTimeout(() => {
                 
-                if (productos.length > 0) {
-                    res(productos)
+                if (setCerveza.length > 0) {
+                    res(setCerveza)
                 }
                 else{
                     rej('no hay produtos')
@@ -23,10 +28,11 @@ const ItemList = ({productos}) => {
         })
         // setCerveza(productos)
         promesa
-            .then(res => {setCerveza(res)})
+            .then(res => {getItem(res)})
             .catch(err => {console.log(err)})
+        // getItem()
 
-    }, [productos])
+    }, [])
 
     return (
         <>
