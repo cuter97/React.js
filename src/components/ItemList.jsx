@@ -4,9 +4,9 @@ import Item from "./Item";
 const ItemList = () => {
 
     const [cerveza, setCerveza] = useState([]);
-        
+       
     const getItem = async () => {
-        const data = await fetch('https://my-json-server.typicode.com/cuter97/API/productos')
+        const data = await fetch('https://my-json-server.typicode.com/cuter97/React-Api/productos')
         const prod = await data.json()
         setCerveza(prod)
     }
@@ -24,7 +24,7 @@ const ItemList = () => {
                     rej('no hay produtos')
                 }
                 
-            }, 2*1000);
+            }, 0*1000);
         })
         // setCerveza(productos)
         promesa

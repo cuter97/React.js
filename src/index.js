@@ -9,30 +9,25 @@ import "./style/body.scss"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App';
-import Nosotros from './routes/Nosotros';
 import Carrito from './routes/Carrito';
-import Home from './routes/Home';
+// import Home from './routes/Home';
 import Error from './routes/Error';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import ItemListContainer from './components/ItemListContainer';
 
 ReactDOM.render(
   <React.StrictMode>
 
+    
+
     <BrowserRouter>
 
       <Routes>
-        {/* llamamos a route para especificar las rutas con las que vamos a trabajar */}
-          {/* route recibe el dos cosas importantes: el path que es la url y tambien recibe el elemento que se va a pintar */}
-          {/* para no perder el navbar en cada una de las pestañas trabajo con rutas anidadas */}
         <Route path='/' element = {<App />}>
-              {/* en este caso la ruta home va a contener al nosotros y al carrito */}
-              {/* una ruta que contiene a otras rutas anidadas puede tener un index */}
-              <Route index element={<Home />}/> {/*ruta que se va a pintar cuando estemos en la ruta raiz */}
-              <Route path = 'Index/:id' element = {<ItemDetailContainer/>} />
-              <Route path = 'Nosotros' element = {<Nosotros />} />
+              <Route index element={<ItemListContainer/>}/> 
+              <Route path = 'Item/:id' element = {<ItemDetailContainer/>} />
               <Route path = 'Carrito' element = {<Carrito />} />
 
-              {/* colocamos el error 404 en caso de que no encuentre la seccion o este mal escrita */}
               <Route path='*' element = {<Error />} />
         </Route>
       </Routes>

@@ -1,7 +1,76 @@
+@import 'propiedades';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .card-body{
     background-color: rgba(243, 243, 243, 0.945);
 }
-.completo{
-    align-items: center;
-    height: 80vh;
+
+// cards de informacion de los productos
+.tam-card{
+    max-width: 1080px;
+    @include size(tablet){
+        margin-top: 100px;
+    }
 }
+.color-fondo{
+    background-color:antiquewhite;
+}
+.card-titulo{
+    text-align: center;
+    font-size: 28px;
+}
+
+.fondo-img{
+    background-image:url('imagenes/fondo.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height:calc(100vh - 68px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include size(phone){
+        height:calc(100vh + 200px);
+    }
+    @include size(tablet){
+        align-items: flex-start;
+    }
+}
+.menu{
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+}
+
+.card-home{
+    width: 25rem;
+    
+}
+.ajuste{
+    width: 200px;
+	height: 400px;
+    object-fit: cover;
+}
+
+.medio{
+    display: flex;
+    justify-content: center;
+}
+.letra{
+    font-size: 20px;
+    font-family: 'circular,sans-serif';
+}
+
+.fondo-pag{
+    background-image:url('./imagenes/fondoReact.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 120px;    
+}
+@import 'footer';

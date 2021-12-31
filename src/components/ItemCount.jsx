@@ -17,10 +17,7 @@ const ItemCount = () => {
 
     return (
         <>
-            <div className="card">
-                <div className="card-header text-center">CONTADOR</div>
-
-                <div className="card-body d-flex align-items-center justify-content-center">
+                <div className="color-fondo mx-4 d-flex align-items-center justify-content-center">
 
                     <button className="btn btn-danger"
                         onClick={disminuir}
@@ -32,13 +29,11 @@ const ItemCount = () => {
 
                     <button className="btn btn-primary" 
                             onClick={aumentar}
-                            // onChange={cambiarStock}
                     >
                         +
                     </button>
                 </div>
 
-     </div>
         </>
     )
 }
