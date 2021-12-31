@@ -6,9 +6,9 @@ import { ImInstagram } from "react-icons/im";
 
 import myImg from '../style/imagenes/logo_footer_1.png'
 
-const instagram = <ImInstagram icon={ImInstagram} />
-const facebook = <ImFacebook icon={ImFacebook} />
-const twiiter = <ImTwitter icon={ImTwitter} />
+// const instagram = <ImInstagram icon={ImInstagram} />
+// const facebook = <ImFacebook icon={ImFacebook} />
+// const twiiter = <ImTwitter icon={ImTwitter} />
 
 const mail = <FontAwesomeIcon icon={faBeer} />
 const Footer = () => {
@@ -22,25 +22,30 @@ const Footer = () => {
                 <nav>
                     <ul className="nav-contenedor">
                         <li className="imagen_logos_redes">
-                            <a className="color-insta" href="https://www.instagram.com/?hl=es" target="_blank" rel="noopener">
+                            <a className="color-insta" href="https://www.instagram.com/?hl=es">
 
-                                <p className="color-icono fa-instagram">{instagram}</p>
+                                {/* <p className="color-icono fa-instagram">{ImInstagram}</p> */}
+                                
+                                <ImInstagram  className="color-icono fa-instagram"></ImInstagram>  
+                                
                                 <span>instagram</span>
 
                             </a>
                         </li>
                         <li className="imagen_logos_redes">
-                            <a className="color-twitter" href="https://twitter.com/?lang=es" target="_blank" rel="noopener">
+                            <a className="color-twitter" href="https://twitter.com/?lang=es">
 
-                                <p className="color-icono fa-twitter">{twiiter}</p>
+                                {/* <p className="color-icono fa-twitter">{twiiter}</p> */}
+                                <ImTwitter className="color-icono fa-twitter" />
                                 <span>twitter</span>
 
                             </a>
                         </li>
                         <li className="imagen_logos_redes">
-                            <a className="color-face" href="https://es-la.facebook.com/" target="_blank" rel="noopener">
+                            <a className="color-face" href="https://es-la.facebook.com/">
                                 
-                                <p className="color-icono fa-facebook-f">{facebook}</p>
+                                {/* <p className="color-icono fa-facebook-f">{facebook}</p> */}
+                                <ImFacebook className="color-icono fa-facebook-f" />
                                 <span>facebook</span>
 
                             </a>
