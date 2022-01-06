@@ -20,8 +20,8 @@ const ItemDetail = ({information}) => {
                                 <p className="card-text letra" >Alcc: {alc} </p>
                                 <p className="card-text letra" >Precio: ${precio} </p>
                                 <div className="d-flex">
-                                    <ItemCount />
-                                    <button className="btn btn-warning">COMPRAR</button>
+                                    <ItemCount productos = {information} />
+                                    {/* <button className="btn btn-warning">COMPRAR</button> */}
                                 </div>
                             </div>
                         </div>
