@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"
 
-const ItemCount = ({productos}) => {
-
-    let stock = 8, initial = 1;
+const ItemCount = ({stock, initial, onAdd, setCantidad}) => {
 
     const [contador, setContador] = useState(initial);
-    const [finish, setFinish] = useState(false)
     const [color, setColor] = useState({
         color1: '#dc3545',
         color2: '#0d6efd',
@@ -23,6 +19,7 @@ const ItemCount = ({productos}) => {
                 color2: '#0d6efd',
             })
         }
+        
     },[contador, stock])
 
     const aumentar = () => {
@@ -34,11 +31,8 @@ const ItemCount = ({productos}) => {
             setContador(contador - 1);
     }
 
-    const onAdd = () => {
-        console.log(productos.producto, contador, productos.id)
-    }
 
-    return !finish ? (
+    return (
         
         <div className="color-fondo mx-4 d-flex align-items-center justify-content-center">
 
@@ -61,29 +55,16 @@ const ItemCount = ({productos}) => {
             </button>
             <button 
                 className="btn btn-warning mx-3" 
-                onClick={() => setFinish(true)}
+                onClick={() => {
+                    onAdd()
+                    setCantidad(contador)
+                }}
             >
                 Terminar
             </button>
 
         </div>
-    ) : (
-        <div>
-            <Link 
-                className="btn btn-success mx-4"
-                onClick={() => onAdd()}
-                to = {"/carrito"}
-            >
-                Add to cart {contador}
-            </Link>
-            <button
-                className="btn btn-info" 
-                onClick={() => setFinish(false)}
-            >
-                Volver
-            </button>
-        </div>
-    )
+    ) 
 }
 
 export default ItemCount

@@ -1,8 +1,21 @@
 // import { useLocation } from "react-router-dom"
 import ItemCount from "../components/ItemCount"
+import { useState } from "react";
+import { Link } from "react-router-dom"
 const ItemDetail = ({information}) => {
 
     const {info, imagen, producto, precio, alc} = information
+    const [finish, setFinish] = useState(false)
+    const [cantidad, setCantidad] = useState(1)
+
+    const onAdd = () => {
+        setFinish(true)
+    }
+
+    // boton de volver para atras
+    const back = () => {
+        setFinish(false)
+    }
   
     return (
         <>
@@ -20,8 +33,31 @@ const ItemDetail = ({information}) => {
                                 <p className="card-text letra" >Alcc: {alc} </p>
                                 <p className="card-text letra" >Precio: ${precio} </p>
                                 <div className="d-flex">
-                                    <ItemCount productos = {information} />
-                                    {/* <button className="btn btn-warning">COMPRAR</button> */}
+                                    {
+                                        !finish && 
+                                        <ItemCount stock = '8' initial = {cantidad} onAdd = {onAdd} setCantidad = {setCantidad} /> 
+                                    }
+                                    {
+                                        finish && <>
+                                            
+                                                <Link 
+                                                    className="btn btn-success mx-4"
+                                                    // onClick={() => onAdd()}
+                                                    type="button"
+                                                    to = {"/carrito"}
+                                                >
+                                                    Add to cart {cantidad}
+                                                </Link>
+                                                <button
+                                                    className="btn btn-info" 
+                                                    onClick={back}
+                                                    type="button"
+                                                >
+                                                    Volver
+                                                </button>
+                                            
+                                        </>
+                                    }
                                 </div>
                             </div>
                         </div>
