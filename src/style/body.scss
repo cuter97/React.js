@@ -78,10 +78,11 @@
 .cart-container {
     box-shadow: 5px 5px 15px -5px #000000;
     border-radius: 15px;
-    .cart-item {
-        .ajuste-cart {
-        height: 140px;
-        object-fit: cover;
-        }
-    }
+    
+}
+
+.card-cart{
+    // object-fit: cover;
+    position: relative;
+    top: -30%;
 }

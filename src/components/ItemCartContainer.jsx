@@ -11,33 +11,41 @@ const ItemCartContainer = () => {
             <Link to={'/'}>Regrese a comprar</Link>
         </div>
     ) : (
-        <div className="container  cart-container  p-1">
-      <div className="row">
-        <div className="col-12 col-lg-12">
-          <ItemCart></ItemCart>
-        </div>
+    <div className="container">
+      <div className="flex-column d-flex align-items-center">
+          {
+            cart.map((element) => (
+            
+              <ItemCart key={element.id} item={element}></ItemCart>
+
+            ))
+
+          }
       </div>
-      <div className="row justify-content-center">
-        <div className="col-12 col-sm-4 col-md-4 col-lg-4 ">
-          <button
-            className="btn btn-warning"
-            onClick={() => clear()}
-          >
-            Vaciar carrito
-          </button>
-        </div>
-        <div className="col-12 col-sm-4 col-md-4 col-lg-4">
-          <h5 className="text-center ">
-            Precio total: ${precioTotal()}
-          </h5>
-        </div>
-        <div className="col-12 col-sm-4 col-md-4 col-lg-4">
-          <h6>
-              <button className="btn btn-success">
-                <span>Confirmar compra</span>
-              </button>
-          </h6>
-        </div>
+
+      <div className="d-flex justify-content-evenly">
+          <div className="">
+            <h5 className="my-2">
+              Precio total: ${precioTotal()}
+            </h5>
+          </div>
+
+
+          <div>
+            <button
+              className="btn btn-warning mx-3"
+              onClick={() => clear()}
+            >
+              Vaciar carrito
+            </button> 
+            
+            <button className="btn btn-success">
+              <span>Confirmar compra</span>
+            </button>
+      
+          </div>
+
+
       </div>
     </div>
     )

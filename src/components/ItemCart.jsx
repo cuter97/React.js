@@ -1,40 +1,36 @@
-import { useContext } from "react"
-import { CartContext } from "./CartContextCard"
+ import { useContext } from "react"
+ import { CartContext } from "./CartContextCard"
 
-const ItemCart = () => {
-    const {cart, removeItem} = useContext(CartContext)
+const ItemCart = ({item}) => {
+    
+     const {removeItem} = useContext(CartContext)
     
     return (
-        <div>
-            {cart.map((element) => (
-                <div
-                    className="row m-3 p-3 cart-item align-items-center justify-content-between"
-                    key={element.id}
-                >
-                    <div className=" col-md-2 col-lg-2">
-                        <img className="ajuste-cart" alt='carrito' src={element.imagen}></img>
+   
+        <div
+            className="card mb-3 rounded-3 shadow border-0 "
+            // key={element.id}
+            style={{ height: 150, width:900, overflow: `hidden`}}
+        >
+                <div className="row g-0" style={{height: 150}}>
+                    <div className="col-md-3">
+                    <img src={item.imagen} className="img-fluid rounded-start card-cart" alt="beer"></img>
                     </div>
-                    <div className=" col-md-3 col-lg-3 ">
-                        <h6 className="item-name">{element.producto}</h6>
-                    </div>
-                    <div className=" col-md-2 col-lg-2 ">
-                        <h6  className="ml-5 ">${element.precio}</h6>
-                    </div>
-                    <div className=" col-md-3 col-lg-2 ">
-                         <h6>{element.cantidad}</h6>
-                    </div>
-                    
-                    <div className=" col-md-1 col-lg-3 ">
-                        <button
-                        className="btn ml-5 p-1"
-                        onClick={() => removeItem(element.id)}
-                        >
-                        X
-                        </button>
+                    <div className="col-md-9 h-100 position-relative">
+                        <div className="card-body ">
+                            <h5 className="card-title">{item.producto}</h5>
+                            <p className="card-text">Precio: ${item.precio}</p>
+                            <p className="card-text">Cantidad: {item.cantidad}</p>
+                            <button
+                                className="btn-close position-absolute top-0 end-0"
+                                onClick={() => removeItem(item.id)}
+                            >
+                            </button>
+                        </div>
                     </div>
                 </div>
-            ))}
-    </div>
+        </div>
+    
     )
 }
 
