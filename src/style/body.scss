@@ -73,3 +73,15 @@
     padding: 120px;    
 }
 @import 'footer';
+
+
+.cart-container {
+    box-shadow: 5px 5px 15px -5px #000000;
+    border-radius: 15px;
+    .cart-item {
+        .ajuste-cart {
+        height: 140px;
+        object-fit: cover;
+        }
+    }
+}

@@ -1,9 +1,11 @@
 // import { useLocation } from "react-router-dom"
 import ItemCount from "../components/ItemCount"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom"
+import { CartContext } from "./CartContextCard";
 const ItemDetail = ({information}) => {
 
+    const {addItem} = useContext(CartContext)
     const {info, imagen, producto, precio, alc} = information
     const [finish, setFinish] = useState(false)
     const [cantidad, setCantidad] = useState(1)
@@ -16,7 +18,7 @@ const ItemDetail = ({information}) => {
     const back = () => {
         setFinish(false)
     }
-  
+
     return (
         <>
         <div className="fondo-img">
@@ -35,14 +37,14 @@ const ItemDetail = ({information}) => {
                                 <div className="d-flex">
                                     {
                                         !finish && 
-                                        <ItemCount stock = '8' initial = {cantidad} onAdd = {onAdd} setCantidad = {setCantidad} /> 
+                                        <ItemCount stocks = {information} initial = {cantidad} onAdd = {onAdd} setCantidad = {setCantidad} /> 
                                     }
                                     {
                                         finish && <>
                                             
                                                 <Link 
                                                     className="btn btn-success mx-4"
-                                                    // onClick={() => onAdd()}
+                                                     onClick={() => addItem({...information, cantidad})}
                                                     type="button"
                                                     to = {"/carrito"}
                                                 >

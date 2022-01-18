@@ -3,7 +3,8 @@ import { Link, NavLink } from "react-router-dom"
 // importamos icono del carrito de compras
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCartArrowDown} from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "./CartContextCard";
 
 const elmenet = <FontAwesomeIcon icon={faCartArrowDown} />
 
@@ -16,7 +17,7 @@ function BrandLink({ brand, children }) {
 }
 
 const NavBar = () => {
-
+    const {itemCantidad} = useContext(CartContext)
     const [nav, setNav] = useState([]);
        
     const getItem = async () => {
@@ -50,8 +51,9 @@ const NavBar = () => {
                             ))}
                             
                         </ul>
-                        <NavLink to="/carrito" className="nav-link fs-4">
+                        <NavLink to="/carrito" className="nav-link fs-4 position-relative">
                             {elmenet}
+                            {itemCantidad() > 0 && <span className="position-absolute fs-6 top-0 start-75 numero translate-middle-x badge rounded-pill bg-danger">{itemCantidad()}</span>}
                         </NavLink>
                     </div>
                 </div>

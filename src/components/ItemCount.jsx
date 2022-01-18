@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const ItemCount = ({stock, initial, onAdd, setCantidad}) => {
-
+const ItemCount = ({stocks, initial, onAdd, setCantidad}) => {
+    const {stock} = stocks
     const [contador, setContador] = useState(initial);
     const [color, setColor] = useState({
         color1: '#dc3545',

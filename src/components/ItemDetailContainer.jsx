@@ -10,30 +10,31 @@ const ItemDetailContainer = () => {
 
     
     useEffect(() => {
-
+        
         const getInfo = async () => {
             const data = await fetch(`https://my-json-server.typicode.com/cuter97/React-Api/productos/${id}`)
             const product = await data.json()
             setInformacion(product)
         }
-
-        const nuevaPromesa = new Promise( (res, rej) => {
+        
+        // const nuevaPromesa = new Promise( (res, rej) => {
             
-            setTimeout(() => {
+        //     setTimeout(() => {
                 
-                if (setInformacion.length > 0) {
-                    res(setInformacion)
-                }
-                else{
-                    rej('no hay produtos')
-                }
+        //         if (setInformacion.length > 0) {
+        //             res(setInformacion)
+        //         }
+        //         else{
+        //             rej('no hay produtos')
+        //         }
                 
-            }, 0*1000);
-        })
-        // setCerveza(productos)
-        nuevaPromesa
-            .then(res => {getInfo(res)})
-            .catch(err => {console.log(err)})
+        //     }, 0*1000);
+        // })
+        // // setCerveza(productos)
+        // nuevaPromesa
+        //     .then(res => {getInfo(res)})
+        //     .catch(err => {console.log(err)})`
+        getInfo()
     }, [id])
 
     return (
