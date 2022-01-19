@@ -2,11 +2,12 @@ import { Link, NavLink } from "react-router-dom"
 
 // importamos icono del carrito de compras
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCartArrowDown} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "./CartContextCard";
 
-const elmenet = <FontAwesomeIcon icon={faCartArrowDown} />
+
+const elmenet = <FontAwesomeIcon className="iconoCart" icon={faShoppingCart} />
 
 function BrandLink({ brand, children }) {  
     return (

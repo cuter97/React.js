@@ -86,3 +86,11 @@
     position: relative;
     top: -30%;
 }
+
+
+.iconoCart{
+    color: rgb(221, 221, 25);
+    &:hover{
+        color: white;
+    }
+}
