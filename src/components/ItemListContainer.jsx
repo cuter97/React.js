@@ -2,17 +2,31 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom"
 import Item from "./Item";
 
+import { collection, getDocs } from "firebase/firestore";
+import db from "../firebase/firebase";
+
 const ItemListContainer = () => {
     const [element, setElemet] = useState([])
     
     
-    const getItem = async () => {
-        const data = await fetch('https://my-json-server.typicode.com/cuter97/React-Api/productos')
-        const prod = await data.json()
-        setElemet(prod)
-    }
+    // const getItem = async () => {
+    //     const data = await fetch('https://my-json-server.typicode.com/cuter97/React-Api/productos')
+    //     const prod = await data.json()
+    //     setElemet(prod)
+    // }
+    // useEffect(() => {
+        // getItem()
+    // }, [])
+
     useEffect(() => {
-        getItem()
+        const obtenerDatos = async() => {
+            const datos = await getDocs(collection(db, 'productos'))
+            setElemet(datos.docs.map(elemento => {
+                return {...elemento.data(), id: elemento.id}
+            }))
+        }
+
+        obtenerDatos()
     }, [])
     
     const [serchParams] = useSearchParams();
@@ -22,7 +36,7 @@ const ItemListContainer = () => {
 
         const filterBrand = (brand) => {
             return element.filter(
-             aux => aux.tipo.toLowerCase() === brand.toLowerCase());
+             aux => aux.tipo === brand);
         }
         
         if (!brand){
