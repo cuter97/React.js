@@ -14,6 +14,7 @@ import Carrito from './routes/Carrito';
 import Error from './routes/Error';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer';
+import Formulario from './components/Formulario';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,6 +28,7 @@ ReactDOM.render(
               <Route index element={<ItemListContainer/>}/> 
               <Route path = 'Item/:id' element = {<ItemDetailContainer/>} />
               <Route path = 'Carrito' element = {<Carrito />} />
+              <Route path = 'formulario' element = {<Formulario />} />
 
               <Route path='*' element = {<Error />} />
         </Route>

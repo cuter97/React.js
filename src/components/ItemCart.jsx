@@ -8,7 +8,7 @@ const ItemCart = ({item}) => {
     return (
    
         <div
-            className="card mb-3 rounded-3 shadow border-0 "
+            className="card mb-3 rounded-3 shadow border-0"
             // key={element.id}
             style={{ height: 150, width:900, overflow: `hidden`}}
         >

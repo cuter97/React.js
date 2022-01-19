@@ -11,7 +11,7 @@ const ItemCartContainer = () => {
             <Link to={'/'}>Regrese a comprar</Link>
         </div>
     ) : (
-    <div className="container">
+    <div className="container p-5">
       <div className="flex-column d-flex align-items-center">
           {
             cart.map((element) => (
@@ -38,14 +38,21 @@ const ItemCartContainer = () => {
             >
               Vaciar carrito
             </button> 
-            
-            <button className="btn btn-success">
-              <span>Confirmar compra</span>
-            </button>
+            <Link to={'/formulario'}>
+              <button className="btn btn-success">
+                <span>Confirmar compra</span>
+              </button>
+            </Link>
       
           </div>
+      </div>
 
-
+      <div className="text-center my-5">
+        <Link to={'/'}>
+          <button className="btn btn-info fs-5 px-4">
+            Seguir comprando
+          </button>
+        </Link>
       </div>
     </div>
     )
