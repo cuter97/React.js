@@ -16,22 +16,7 @@ export const CartContextCard = ({children}) => {
             const changed = cart.filter(aux => aux.id !== item.id)
             setCart([newItem, ...changed])
 
-            // cambie la logica ya que al agregar el mismo producto cuando ya no hay mas stock hace que se me borre todo el carrito
-            // la logica comentada fuciona pero no es optima (revisar)
-            // let itemId = cart.find((value) => value.id === item.id)
-
-            // if (itemId.cantidad + item.cantidad <= item.stock || item.cantidad === -1) {
-            //     setCart(cart.map((aux) => {
-            //         return aux.id === item.id ? {...aux, cantidad: aux.cantidad + item.cantidad} : aux;
-            //     }).filter((aux) => aux.cantidad > 0))
-            // }else if (itemId.cantidad + item.cantidad > item.stock) {
-            //     setCart(cart.map((aux) => {
-            //         return aux.id === item.id ? {...aux, cantidad: aux.item.stock} : aux;
-            //     }).filter((aux) => aux.cantidad > 0))
-            // }
-
         }else {
-            // setCart([...cart, item])
             setCart([newItem, ...cart])
         }
     }

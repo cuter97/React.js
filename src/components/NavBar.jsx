@@ -6,6 +6,9 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "./CartContextCard";
 
+// datos de firebase
+import { collection, getDocs } from "firebase/firestore";
+import db from "../firebase/firebase";
 
 const elmenet = <FontAwesomeIcon className="iconoCart" icon={faShoppingCart} />
 
@@ -21,14 +24,24 @@ const NavBar = () => {
     const {itemCantidad} = useContext(CartContext)
     const [nav, setNav] = useState([]);
        
-    const getItem = async () => {
-        const data = await fetch('https://my-json-server.typicode.com/cuter97/React-Api/productos')
-        const prod = await data.json()
-        let brands = [...new Set(prod.map(aux => aux.tipo))];
+    // const getItem = async () => {
+    //     const data = await fetch('https://my-json-server.typicode.com/cuter97/React-Api/productos')
+    //     const prod = await data.json()
+    //     let brands = [...new Set(prod.map(aux => aux.tipo))];
+    //     setNav(brands)
+    // }
+
+    const datosFirebase = async() =>{
+        const datos = await getDocs(collection(db, 'productos'))
+        let filtro = datos.docs.map(aux => {
+            return {...aux.data()}
+        })
+        let brands = [...new Set(filtro.map(aux => aux.tipo))]
         setNav(brands)
     }
+
     useEffect(() => {
-        getItem();
+        datosFirebase();
     }, [])
     
     
