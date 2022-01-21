@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "./CartContextCard";
+import { CartContext } from "./CartContextCart";
 
 // datos de firebase
 import { collection, getDocs } from "firebase/firestore";

@@ -10,7 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App';
 import Carrito from './routes/Carrito';
-// import Home from './routes/Home';
 import Error from './routes/Error';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer';
