@@ -16,11 +16,26 @@ export const CartContextCard = ({children}) => {
 
         const newItem = {...item}
 
-        // si esta en el carrito cambio la cantidad (no la sumo)
+        // si vuelve a agregar mas productos y supera al stock pone en cantidad el stock disponible
         if (isInCart(item.id)) {
             
-            const changed = cart.filter(aux => aux.id !== item.id)
-            setCart([newItem, ...changed])
+            let itemCart = cart.find((value) => value.id === item.id)
+
+            const suma = itemCart.cantidad + item.cantidad
+
+            if(suma <= item.stock){
+
+                setCart(cart.map((aux) => {
+                    return aux.id === item.id ? {...aux, cantidad: suma} : aux 
+                }))
+
+            }else if(suma > item.stock){
+                
+                setCart(cart.map((aux) => {
+                    return aux.id === item.id ? {...aux, cantidad: item.stock} : aux 
+                }))
+
+            }
 
         }else {
             setCart([newItem, ...cart])
